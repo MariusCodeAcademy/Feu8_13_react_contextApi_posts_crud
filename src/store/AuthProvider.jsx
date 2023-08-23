@@ -13,10 +13,22 @@ AuthContext.displayName = 'Auth';
 
 export default function AuthProvider(props) {
   const [token, setToken] = useState('');
+  const [email, setEmail] = useState('');
+
+  const isLoggedIn = !!token;
+
+  function login() {}
+
+  function logout() {}
 
   const ctx = {
-    token: 'asdasdasd',
+    token: token,
+    email: email,
+    login: login,
+    logout: logout,
+    isLoggedIn: isLoggedIn,
   };
+
   return (
     <AuthContext.Provider value={ctx}>{props.children}</AuthContext.Provider>
   );
