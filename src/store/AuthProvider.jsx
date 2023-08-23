@@ -5,7 +5,7 @@ export const AuthContext = createContext({
   token: '',
   isUserLoggedIn: false,
   // eslint-disable-next-line no-unused-vars
-  login(email) {},
+  login(gotEmail, gotToken) {},
   logout() {},
 });
 
@@ -17,7 +17,10 @@ export default function AuthProvider(props) {
 
   const isLoggedIn = !!token;
 
-  function login() {}
+  function login(gotEmail, gotToken) {
+    setToken(gotToken);
+    setEmail(gotEmail);
+  }
 
   function logout() {}
 

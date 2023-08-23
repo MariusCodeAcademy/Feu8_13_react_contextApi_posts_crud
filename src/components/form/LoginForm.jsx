@@ -1,8 +1,10 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useAuth } from '../../store/AuthProvider';
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+  const ctx = useAuth();
   const formik = useFormik({
     initialValues: {
       email: 'emma.wong@reqres.in',
@@ -42,6 +44,8 @@ export default function LoginForm() {
         if (ats.data.token) {
           console.log('Login pavyko');
           // kviesti tevineme elemente esancia funkcija
+          ctx.login(formik.values.email, ats.data.token);
+          props.onSekme();
         }
       })
       .catch((error) => {

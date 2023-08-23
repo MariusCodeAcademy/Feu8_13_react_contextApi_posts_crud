@@ -12,7 +12,7 @@ export default function LoginPage() {
   return (
     <div className='container'>
       <h1>Login Here</h1>
-      <LoginForm onSubmit={handleSuccess} />
+      <LoginForm onSekme={handleSuccess} />
     </div>
   );
 }
