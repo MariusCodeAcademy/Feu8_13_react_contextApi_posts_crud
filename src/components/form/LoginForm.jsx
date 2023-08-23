@@ -41,10 +41,7 @@ export default function LoginForm() {
 
         if (ats.data.token) {
           console.log('Login pavyko');
-          setLoginSuccess(true);
-          ctx.login(formik.values.email);
-          // naviguosim i home arba vip page
-          navigate('/vip', { replace: true });
+          // kviesti tevineme elemente esancia funkcija
         }
       })
       .catch((error) => {
@@ -82,7 +79,7 @@ export default function LoginForm() {
         {formik.errors.password && formik.touched.password && (
           <p className='error'>{formik.errors.password}</p>
         )}
-        <button>Login</button>
+        <button type='submit'>Login</button>
       </form>
     </div>
   );
