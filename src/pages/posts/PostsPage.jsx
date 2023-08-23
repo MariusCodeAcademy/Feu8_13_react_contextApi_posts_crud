@@ -10,17 +10,16 @@ export default function PostsPage() {
 
   useEffect(() => {
     // parsisiusti
-
     axios
       .get(url)
       .then((resp) => {
         console.log('resp ===', resp);
+        // irasyti i postsArr
         setPostsArr(resp.data);
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
       });
-    // irasyti i postsArr
   }, []);
 
   return (
@@ -32,6 +31,7 @@ export default function PostsPage() {
       </p>
       <ul>
         {postsArr.map((pObj) => (
+          // vietoj li generuoti SinglePostLink
           <li key={pObj.id}>
             {/* vietoj "5" paduoti posto id */}
             <Link to={'/posts/5'}>{pObj.title}</Link>
