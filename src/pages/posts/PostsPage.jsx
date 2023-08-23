@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 // TODO: turetu buti config.js
 // TODO: use .env file
 const url = 'http://localhost:5000/posts';
@@ -31,7 +32,10 @@ export default function PostsPage() {
       </p>
       <ul>
         {postsArr.map((pObj) => (
-          <li key={pObj.id}>{pObj.title}</li>
+          <li key={pObj.id}>
+            {/* vietoj "5" paduoti posto id */}
+            <Link to={'/posts/5'}>{pObj.title}</Link>
+          </li>
         ))}
       </ul>
     </div>

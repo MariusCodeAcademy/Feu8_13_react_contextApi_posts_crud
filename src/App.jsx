@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import { useAuth } from './store/AuthProvider';
 import LoginPage from './pages/auth/LoginPage';
 import NotFound from './pages/NotFound';
+import SinglePostPage from './pages/posts/SinglePostPage';
 
 export default function App() {
   const { isLoggedIn } = useAuth();
@@ -15,7 +16,9 @@ export default function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
-        {isLoggedIn && <Route path='/posts' element={<PostsPage />} />}
+        <Route path='/posts' element={<PostsPage />} />
+        {/* vietoj penketo turi buti dinaminis posto id parametras */}
+        <Route path='/posts/5' element={<SinglePostPage />} />
         {!isLoggedIn && <Route path='/login' element={<LoginPage />} />}
         <Route path='*' element={<NotFound />} />
       </Routes>
