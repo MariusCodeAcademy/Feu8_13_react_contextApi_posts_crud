@@ -36,13 +36,13 @@ export default function LoginForm(props) {
     axios
       .post('https://reqres.in/api/login', userCredentialsObj)
       .then((ats) => {
-        console.log('ats ===', ats);
+        // console.log('ats ===', ats);
         // jei gavom token tai pavyko prisiloginti
         // atspausdinti token
         console.log('ats.data.token ===', ats.data.token);
 
         if (ats.data.token) {
-          console.log('Login pavyko');
+          // console.log('Login pavyko');
           // kviesti tevineme elemente esancia funkcija
           ctx.login(formik.values.email, ats.data.token);
           props.onSekme();
