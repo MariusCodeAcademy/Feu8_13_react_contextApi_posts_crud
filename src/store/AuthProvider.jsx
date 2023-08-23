@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export const AuthContext = createContext({
   email: '',
@@ -12,10 +12,20 @@ export const AuthContext = createContext({
 AuthContext.displayName = 'Auth';
 
 export default function AuthProvider(props) {
+  const [token, setToken] = useState('');
+
   const ctx = {
     token: 'asdasdasd',
   };
   return (
     <AuthContext.Provider value={ctx}>{props.children}</AuthContext.Provider>
   );
+}
+
+// custom hook
+// turi prasideti zodeliu 'use'
+// tiesiog funkcija kuri gali naudoti hooks
+// daznai grazina reikme
+export function useAuth() {
+  return useContext(AuthContext);
 }
