@@ -1,6 +1,8 @@
 import css from './NewPostForm.module.css';
 import Btn from '../UI/btn/Btn';
 import { useFormik } from 'formik';
+import config from '../../config';
+import axios from 'axios';
 
 /*
 {
@@ -17,6 +19,8 @@ import { useFormik } from 'formik';
 }
 */
 
+const url = config.postUrl;
+
 export default function NewPostForm() {
   const formik = useFormik({
     initialValues: {
@@ -29,8 +33,21 @@ export default function NewPostForm() {
     },
     onSubmit: (values) => {
       console.log('form submit values ===', values);
+      sendNewPostData(values);
     },
   });
+
+  function sendNewPostData(newPostObj) {
+    axios
+      .post(url, newPostObj)
+      .then((resp) => {
+        console.log('resp ===', resp);
+      })
+      .catch((error) => {
+        console.warn('ivyko klaida:', error);
+      });
+  }
+
   return (
     <div>
       <form onSubmit={formik.handleSubmit} className={css.form}>
