@@ -41,6 +41,7 @@ export default function SinglePostPage() {
           <li key={singleTag}>{singleTag}</li>
         ))}
       </ul>
+      {/* Comments */}
     </Container>
   );
 }
