@@ -3,6 +3,7 @@ import axios from 'axios';
 import Container from '../../components/UI/container/Container';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Btn from '../../components/UI/btn/Btn';
 
 const url = 'http://localhost:5000/posts';
 
@@ -23,10 +24,6 @@ export default function SinglePostPage() {
   }, []);
 
   console.log('postId ===', postId);
-  // pasiimti dinamine adreso dali (parametra) tai yra post id
-  // parsisiusti su axios konkretu posta
-  // 3083126839342818 yra posto id
-  // http://localhost:5000/posts/3083126839342818
 
   return (
     <Container>
@@ -41,6 +38,9 @@ export default function SinglePostPage() {
           <li key={singleTag}>{singleTag}</li>
         ))}
       </ul>
+      <div>
+        <Btn>Delete</Btn>
+      </div>
       {/* Comments */}
     </Container>
   );
