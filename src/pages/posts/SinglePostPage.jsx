@@ -25,6 +25,10 @@ export default function SinglePostPage() {
 
   console.log('postId ===', postId);
 
+  function handlePostDelete() {
+    console.log('handlePostDelete ===');
+  }
+
   return (
     <Container>
       <h1>{currentPost.title}</h1>
@@ -39,7 +43,7 @@ export default function SinglePostPage() {
         ))}
       </ul>
       <div>
-        <Btn>Delete</Btn>
+        <Btn onClick={handlePostDelete}>Delete</Btn>
       </div>
       {/* Comments */}
     </Container>
