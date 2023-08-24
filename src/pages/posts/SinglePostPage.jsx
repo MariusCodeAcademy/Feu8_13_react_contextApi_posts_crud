@@ -53,6 +53,7 @@ export default function SinglePostPage() {
       <p className='author'>
         By: <strong>{currentPost.author}</strong>
       </p>
+      <p>{currentPost.date}</p>
       <h4>Tags</h4>
       <ul className='unlisted flex gap-2'>
         {currentPost.tags?.map((singleTag) => (
