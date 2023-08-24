@@ -33,7 +33,8 @@ export default function NewPostForm() {
     },
     onSubmit: (values) => {
       console.log('form submit values ===', values);
-      sendNewPostData(values);
+      const newPostWhereTagsAreArray = {};
+      sendNewPostData(newPostWhereTagsAreArray);
     },
   });
 
@@ -42,9 +43,15 @@ export default function NewPostForm() {
       .post(url, newPostObj)
       .then((resp) => {
         console.log('resp ===', resp);
+        // patikrinti koks atsakymas sekmes atveju
+        // naviguoti i posts
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
+        // atsispausdini klaidu masyva is back end
+        // atvaizduoti klaidas useriui
+        // 1. isspausdinti kazkokiam dive ar ul
+        // 2. nustatos kaip klaida formike su formik.setErrors({title: 'must be 5 charackters'})
       });
   }
 
@@ -59,6 +66,7 @@ export default function NewPostForm() {
             id='title'
             placeholder='Title'
           />
+          <p>errors</p>
         </div>
         <div className='inputBlock'>
           <input
