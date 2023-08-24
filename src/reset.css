@@ -73,6 +73,10 @@ button {
   display: flex;
 }
 
+.gap-2 {
+  gap: 20px;
+}
+
 .between {
   justify-content: space-between;
   align-items: center;

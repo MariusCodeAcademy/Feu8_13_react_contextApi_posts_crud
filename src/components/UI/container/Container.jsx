@@ -1,7 +1,7 @@
 import css from './Container.module.css';
 
 export default function Container(props) {
-  console.log('props.className ===', props.className);
+  // console.log('props.className ===', props.className);
 
   let calculatedClass = css.container;
 
