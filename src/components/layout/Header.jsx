@@ -1,13 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import css from './Header.module.css';
 import { useAuth } from '../../store/AuthProvider';
+import Container from '../UI/container/Container';
 
 export default function Header() {
   const { isLoggedIn, logout } = useAuth();
   // console.log('ctx Header ===', ctx);
   return (
     <header className={css.wrap}>
-      <div className={`container ${css.flex}`}>
+      <Container className={css.flex}>
         <Link href='/' className={css.logo}>
           Logo
         </Link>
@@ -31,7 +32,7 @@ export default function Header() {
             </NavLink>
           )}
         </nav>
-      </div>
+      </Container>
     </header>
   );
 }

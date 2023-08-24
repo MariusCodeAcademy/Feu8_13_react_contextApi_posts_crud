@@ -45,3 +45,9 @@
 
 1. Prideti inputa sujungti su state
 2. padaryti kad inputas filtruotu postus pagal title
+
+## prideti Container
+
+1. NotFound
+2. LoginPage
+3. Header
