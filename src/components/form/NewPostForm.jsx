@@ -3,6 +3,7 @@ import Btn from '../UI/btn/Btn';
 import { useFormik } from 'formik';
 import config from '../../config';
 import axios from 'axios';
+import { useState } from 'react';
 
 /*
 {
@@ -22,6 +23,7 @@ import axios from 'axios';
 const url = config.postUrl;
 
 export default function NewPostForm() {
+  const [errorArr, setErrorArr] = useState([]);
   const formik = useFormik({
     initialValues: {
       image: '',
@@ -49,6 +51,11 @@ export default function NewPostForm() {
       .catch((error) => {
         console.warn('ivyko klaida:', error);
         // atsispausdini klaidu masyva is back end
+        const klaidos = error.response.data.error;
+        console.log(
+          'error.response.data.error; ===',
+          error.response.data.error
+        );
         // atvaizduoti klaidas useriui
         // 1. isspausdinti kazkokiam dive ar ul
         // 2. nustatos kaip klaida formike su formik.setErrors({title: 'must be 5 charackters'})
