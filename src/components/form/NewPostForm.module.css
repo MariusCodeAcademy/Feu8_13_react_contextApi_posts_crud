@@ -1,0 +1,11 @@
+.form {
+  display: grid;
+  gap: 12px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form input,
+.form textarea {
+  width: 100%;
+}
