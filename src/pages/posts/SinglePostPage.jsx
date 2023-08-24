@@ -1,25 +1,27 @@
 // cia mes graziai atvaizuosim visa info esancia posto objekte
 import axios from 'axios';
 import Container from '../../components/UI/container/Container';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Btn from '../../components/UI/btn/Btn';
 
 const url = 'http://localhost:5000/posts';
 
 export default function SinglePostPage() {
+  const navigate = useNavigate();
   const { postId } = useParams();
   const [currentPost, setCurrentPost] = useState({});
+  const currentPostUrl = `${url}/${postId}`;
 
   useEffect(() => {
     axios
-      .get(`${url}/${postId}`)
+      .get(currentPostUrl)
       .then(({ data }) => {
         console.log('data ===', data);
         setCurrentPost(data);
       })
       .catch((error) => {
-        console.warn('ivyko klaida:', error);
+        console.warn('ivyko klaida negavom post:', error);
       });
   }, []);
 
@@ -27,6 +29,19 @@ export default function SinglePostPage() {
 
   function handlePostDelete() {
     console.log('handlePostDelete ===');
+    // siusti axios.delete( currentPostUrl)
+    axios
+      .delete(currentPostUrl)
+      .then((resp) => {
+        console.log('resp ===', resp);
+        if (resp.status === 200) {
+          //pavyko istrint
+          navigate('/posts', { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.warn('ivyko klaida trinant:', error);
+      });
   }
 
   return (
