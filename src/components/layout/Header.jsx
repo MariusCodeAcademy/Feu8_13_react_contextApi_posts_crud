@@ -5,12 +5,15 @@ import Container from '../UI/container/Container';
 
 export default function Header() {
   const { isLoggedIn, logout } = useAuth();
+
+  const logoName = import.meta.env.VITE_SITE_NAME;
+
   // console.log('ctx Header ===', ctx);
   return (
     <header className={css.wrap}>
       <Container className={css.flex}>
         <Link href='/' className={css.logo}>
-          Logo
+          {logoName}
         </Link>
         <nav>
           <NavLink className={css.navLink} to={'/'}>

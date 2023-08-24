@@ -9,6 +9,12 @@ const url = 'http://localhost:5000/posts';
 export default function PostsPage() {
   const [postsArr, setPostsArr] = useState([]);
 
+  // evn reikme
+  console.log(
+    'import.meta.env.VITE_BASE_URL ===',
+    import.meta.env.VITE_BASE_URL
+  );
+
   useEffect(() => {
     // parsisiusti
     axios
