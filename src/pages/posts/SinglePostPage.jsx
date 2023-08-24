@@ -4,6 +4,8 @@ import Container from '../../components/UI/container/Container';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Btn from '../../components/UI/btn/Btn';
+import AddComment from '../../components/comments/AddComment';
+import CommentsList from '../../components/comments/CommentsList';
 
 const url = 'http://localhost:5000/posts';
 
@@ -61,6 +63,11 @@ export default function SinglePostPage() {
         <Btn onClick={handlePostDelete}>Delete</Btn>
       </div>
       {/* Comments */}
+      <hr />
+      <div>
+        <AddComment />
+        <CommentsList />
+      </div>
     </Container>
   );
 }
