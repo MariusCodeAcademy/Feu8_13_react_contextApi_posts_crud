@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Container from '../../components/UI/container/Container';
+import SinglePostLink from '../../components/posts/SinglePostLink';
 // TODO: turetu buti config.js
 // TODO: use .env file
 const url = 'http://localhost:5000/posts';
@@ -23,7 +25,7 @@ export default function PostsPage() {
   }, []);
 
   return (
-    <div className='container'>
+    <Container>
       <h1>PostsPage</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
@@ -32,12 +34,18 @@ export default function PostsPage() {
       <ul>
         {postsArr.map((pObj) => (
           // vietoj li generuoti SinglePostLink
-          <li key={pObj.id}>
-            {/* vietoj "5" paduoti posto id */}
-            <Link to={'/posts/5'}>{pObj.title}</Link>
-          </li>
+          <SinglePostLink
+            key={pObj.id}
+            author={pObj.author}
+            id={pObj.id}
+            title={pObj.title}
+          />
+          // <li key={pObj.id}>
+          //   {/* vietoj "5" paduoti posto id */}
+          //   <Link to={`/posts/${pObj.id}`}>{pObj.title}</Link>
+          // </li>
         ))}
       </ul>
-    </div>
+    </Container>
   );
 }
