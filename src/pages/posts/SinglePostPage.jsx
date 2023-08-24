@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react';
 import Btn from '../../components/UI/btn/Btn';
 import AddComment from '../../components/comments/AddComment';
 import CommentsList from '../../components/comments/CommentsList';
+import config from '../../config';
 
-const url = 'http://localhost:5000/posts';
+const url = config.postUrl;
 
 export default function SinglePostPage() {
   const navigate = useNavigate();
