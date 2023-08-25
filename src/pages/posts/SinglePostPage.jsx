@@ -49,6 +49,9 @@ export default function SinglePostPage() {
 
   return (
     <Container>
+      {currentPost.image && (
+        <img src={currentPost.image} alt={currentPost.title} />
+      )}
       <h1>{currentPost.title}</h1>
       <p>{currentPost.body}</p>
       <p className='author'>
