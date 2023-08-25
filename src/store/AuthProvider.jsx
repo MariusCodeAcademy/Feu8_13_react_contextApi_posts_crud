@@ -15,8 +15,8 @@ export default function AuthProvider(props) {
   const [token, setToken] = useState('');
   const [email, setEmail] = useState('');
 
-  // const isLoggedIn = !!token;
-  const isLoggedIn = true; // debug
+  const isLoggedIn = !!token;
+  // const isLoggedIn = true; // debug
 
   function login(gotEmail, gotToken) {
     setToken(gotToken);

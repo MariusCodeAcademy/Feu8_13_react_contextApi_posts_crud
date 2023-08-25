@@ -8,6 +8,8 @@ import AddComment from '../../components/comments/AddComment';
 import CommentsList from '../../components/comments/CommentsList';
 import config from '../../config';
 
+import noImageImage from '../../assets/no-image.jpg';
+
 const url = config.postUrl;
 
 export default function SinglePostPage() {
@@ -47,11 +49,13 @@ export default function SinglePostPage() {
       });
   }
 
+  let image = currentPost.image ? currentPost.image : noImageImage;
+  image = currentPost.image || noImageImage;
+  const imgAlt = currentPost.image ? currentPost.title : 'default image';
   return (
     <Container>
-      {currentPost.image && (
-        <img src={currentPost.image} alt={currentPost.title} />
-      )}
+      <img src={image} alt={imgAlt} />
+
       <h1>{currentPost.title}</h1>
       <p>{currentPost.body}</p>
       <p className='author'>
