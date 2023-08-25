@@ -63,7 +63,7 @@ export default function NewPostForm() {
         console.warn('ivyko klaida:', error);
         // atsispausdini klaidu masyva is back end
         const klaidos = error.response.data.error;
-        console.log('klaidos; ===', klaidos);
+        console.log('klaidos; ===', JSON.stringify(klaidos, null, 2));
         setErrorArr(klaidos);
         klaidos.forEach((klObj) =>
           formik.setFieldError(klObj.field, klObj.message)
