@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import config from '../../config';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /*
 {
@@ -24,6 +25,7 @@ const url = config.postUrl;
 
 export default function NewPostForm() {
   const [errorArr, setErrorArr] = useState([]);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       image: '',
@@ -35,8 +37,14 @@ export default function NewPostForm() {
     },
     onSubmit: (values) => {
       console.log('form submit values ===', values);
-      const newPostWhereTagsAreArray = {};
-      sendNewPostData(values);
+      const newPostWhereTagsAreArray = {
+        ...values,
+        tags: values.tags
+          .split(',')
+          .map((strEl) => strEl.trim())
+          .filter((strEl) => strEl),
+      };
+      sendNewPostData(newPostWhereTagsAreArray);
     },
   });
 
@@ -47,6 +55,9 @@ export default function NewPostForm() {
         console.log('resp ===', resp);
         // patikrinti koks atsakymas sekmes atveju
         // naviguoti i posts
+        if (resp.status === 200) {
+          navigate('/posts', { replace: true });
+        }
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
