@@ -11,6 +11,7 @@ export default function Header() {
   const logoName = config.siteName;
 
   // console.log('ctx Header ===', ctx);
+
   return (
     <header className={css.wrap}>
       <Container className={css.flex}>
