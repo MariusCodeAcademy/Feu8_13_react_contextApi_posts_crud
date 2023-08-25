@@ -36,7 +36,7 @@ export default function NewPostForm() {
     onSubmit: (values) => {
       console.log('form submit values ===', values);
       const newPostWhereTagsAreArray = {};
-      sendNewPostData(newPostWhereTagsAreArray);
+      sendNewPostData(values);
     },
   });
 
@@ -56,6 +56,7 @@ export default function NewPostForm() {
           'error.response.data.error; ===',
           error.response.data.error
         );
+        setErrorArr(klaidos);
         // atvaizduoti klaidas useriui
         // 1. isspausdinti kazkokiam dive ar ul
         // 2. nustatos kaip klaida formike su formik.setErrors({title: 'must be 5 charackters'})
@@ -64,6 +65,12 @@ export default function NewPostForm() {
 
   return (
     <div>
+      {errorArr.length > 0 && <h3>Errors</h3>}
+      <ul>
+        {errorArr.map((eObj) => (
+          <li key={eObj.message}>{eObj.message}</li>
+        ))}
+      </ul>
       <form onSubmit={formik.handleSubmit} className={css.form}>
         <div className='inputBlock'>
           <input
