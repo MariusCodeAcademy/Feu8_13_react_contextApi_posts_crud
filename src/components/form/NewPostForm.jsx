@@ -63,16 +63,19 @@ export default function NewPostForm() {
         console.warn('ivyko klaida:', error);
         // atsispausdini klaidu masyva is back end
         const klaidos = error.response.data.error;
-        console.log(
-          'error.response.data.error; ===',
-          error.response.data.error
-        );
+        console.log('klaidos; ===', klaidos);
         setErrorArr(klaidos);
+        klaidos.forEach((klObj) =>
+          formik.setFieldError(klObj.field, klObj.message)
+        );
+
         // atvaizduoti klaidas useriui
         // 1. isspausdinti kazkokiam dive ar ul
         // 2. nustatos kaip klaida formike su formik.setErrors({title: 'must be 5 charackters'})
       });
   }
+
+  console.log('formik.errors ===', formik.errors);
 
   return (
     <div>
@@ -91,7 +94,7 @@ export default function NewPostForm() {
             id='title'
             placeholder='Title'
           />
-          <p>errors</p>
+          {formik.errors.title && <p>{formik.errors.title}</p>}
         </div>
         <div className='inputBlock'>
           <input
