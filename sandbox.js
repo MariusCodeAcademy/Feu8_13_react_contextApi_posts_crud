@@ -31,3 +31,9 @@ const rez = errorsArr.reduce((finalObj, eObj) => {
   return finalObj;
 }, {});
 console.log('rez ===', rez);
+
+const finalObj = {};
+errorsArr.forEach((eObj) => {
+  finalObj[eObj.field] = eObj.message;
+});
+console.log('finalObj ===', finalObj);
